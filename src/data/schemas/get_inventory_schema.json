@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "sold": {
+      "type": "integer"
+    },
+    "Active": {
+      "type": "integer"
+    },
+    "string": {
+      "type": "integer"
+    },
+    "pending": {
+      "type": "integer"
+    },
+    "available": {
+      "type": "integer"
+    },
+    "Not Available": {
+      "type": "integer"
+    }
+  }
+}
