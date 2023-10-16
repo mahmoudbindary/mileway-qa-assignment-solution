@@ -4,10 +4,8 @@ import os.path
 import pytest
 from selenium import webdriver
 from selenium.webdriver import ChromeOptions, FirefoxOptions, EdgeOptions
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.core.os_manager import ChromeType
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 
@@ -47,22 +45,9 @@ def driver(request):
     headless = request.config.getoption("--headless")
 
     if browser.casefold() == "chrome":
-        # chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.GOOGLE).install())
-        # chrome_service = Service(ChromeDriverManager().install())
-        #
-        # chrome_options = Options()
-        # options = [
-        #     "--headless",
-        #     # "--disable-gpu",
-        # ]
-        # for option in options:
-        #     chrome_options.add_argument(option)
-        #
-        # driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
         options = ChromeOptions()
         if headless: options.add_argument("--headless")
-        driver = webdriver.Chrome(options=options,
-                                  service=Service(ChromeDriverManager().install()))
+        driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager().install()))
 
     elif browser.casefold() == "firefox":
         options = FirefoxOptions()
